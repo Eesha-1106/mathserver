@@ -84,7 +84,8 @@ urlpatterns = [
 ![Capture](https://github.com/user-attachments/assets/f67762f9-4c3b-41fb-b5dd-16de0e2e09f8)
 
 # HOMEPAGE:
-![capture 1](https://github.com/user-attachments/assets/eb5690f3-7718-4afc-a014-84ca648f4b0a)
+![capture new](https://github.com/user-attachments/assets/8438d181-d660-45da-a96d-048b9e377d1d)
+
 
 
 # RESULT:
