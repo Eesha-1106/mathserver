@@ -29,7 +29,60 @@ Create a HTML file to implement form based input and output.
 Publish the website in the given URL.
 
 # PROGRAM :
+```
+calculate.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lamp Power Calculator</title>
+</head>
+<body>
+    <h1>Lamp Filament Power Calculator</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Calculate Power</button>
+    </form>
+
+    {% if power is not None %}
+        <h2>Calculated Power: {{ power }} Watts</h2>
+    {% endif %}
+</body>
+</html>
+
+views.py
+
+from .forms import PowerCalculationForm
+
+def calculate_power(request):
+    power = None
+    if request.method == 'POST':
+        form = PowerCalculationForm(request.POST)
+        if form.is_valid():
+            intensity = form.cleaned_data['intensity']
+            resistance = form.cleaned_data['resistance']
+            power = intensity ** 2 * resistance  # P = I^2 * R
+    else:
+        form = PowerCalculationForm()
+
+    return render(request, 'powerapp/calculate.html', {'form': form, 'power': power})
+
+urls.py 
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.calculate_power),
+]
+
+```
 # SERVER SIDE PROCESSING:
+
 # HOMEPAGE:
+![alt text](<../exp5/capture 1.jpg>)
 # RESULT:
 The program for performing server side processing is completed successfully.
